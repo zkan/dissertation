@@ -1,0 +1,149 @@
+%==========================================================
+%======================  FRONT STUFF ======================
+%==========================================================
+
+%======================= Cover Page =======================
+%\begin{document}
+\newpage
+\pagestyle{plain}
+\pagenumbering{roman}
+\setcounter{page}{1}
+\addcontentsline{toc}{section}{Title Page}
+%\setlength{\footskip}{-15mm}
+\setlength{\textheight}{230mm}
+\setlength{\voffset}{10mm}
+\vskip -5em
+
+\begin{center}
+	{
+		\singlespace \uppercase{\bf Automatic Suspicious Human Behavior} \par
+	}
+  \vskip 2em
+  {
+  	\lineskip 1.5em
+		\begin{tabular}[t]{c} by\\ \\ Kan Ouivirach
+		\end{tabular}\par
+	}
+%	\vskip 5.6em
+	\vskip 3.5em
+	\singlespace A dissertation submitted in partial fulfillment of the requirements for the\\
+								degree of Doctor of Philosophy in\\
+								Computer Science
+
+%	\vskip 5em
+	\vskip 0.5em
+	{
+		\singlespace
+		\begin{center}
+			\begin{tabular}{rl}
+				\\[-1em]
+				Examination Committee:	& Dr.\ Matthew N.\ Dailey (Chairperson) \\[-0.8em]
+		           									& Dr.\ Dr. Nitin V.\ Afzulpurkar \\[-0.8em]
+		           									& Dr.\ Supavadee Aramvith\\[-0.8em]
+		           									& Dr.\ Sanparith Marukatat\\[-0.8em]\\\\
+		
+				Nationality: 			& Thai \\[-0.8em]
+				Previous Degree:  & Master of Engineering in Computer Science\\[-0.8em]
+		                  		& Asian Institute of Technology, Thailand\\[-0.8em]
+				\\
+				Scholarship Donor: & Royal Thai Government\\[-0.8em]
+				\\
+			\end{tabular}
+		\end{center}
+
+		\vskip 3.0em
+		\centerline{}
+		\vskip 2em
+	}
+\end{center}
+\begin{center}
+	\singlespace Asian Institute of Technology\\School of Engineering
+								and Technology\\Thailand\\December 2011 (Expected)
+\end{center}
+\vfill
+
+%====================== ACKNOWLEDGEMENTS ======================
+\newpage
+\pagestyle{plain}
+\addcontentsline{toc}{section}{Acknowledgment}
+\onecolumn % Single-column.
+\if@twoside\else\raggedbottom\fi % Ragged bottom unless twoside option.
+\setlength{\footskip}{8mm}
+\begin{center}
+{\bf Acknowledgment\\ \vskip 1em}
+\vskip 1em
+\end{center}
+\singlespace
+\doublespace
+\hspace{8.5mm}
+\vspace{-1em}
+
+First, I would like to thank Dr. Matthew N. Dailey, my advisor for teaching and 
+guiding me. I thank him for being very patient with me and always willingly to 
+answer all my questions. 
+
+I big thanks to Kannika Maraphot for her help in the data collection. 
+
+I would also like to thank the Royal Thai Government for their scholarship, 
+without the scholarship studying at AIT would be impossible. 
+
+Lastly, I would like to thank my family for always supporting me. 
+
+%====================== PUBLICATIONS ======================
+
+
+
+%====================== ABSTRACT ======================
+\newpage
+\pagestyle{plain}
+\addcontentsline{toc}{section}{Abstract}
+\onecolumn % Single-column.
+\if@twoside\else\raggedbottom\fi % Ragged bottom unless twoside option.
+
+\setlength{\footskip}{8mm}
+
+\begin{center}
+{\bf Abstract \\ \vskip 1em}
+\vskip 1em
+\end{center}
+\singlespace
+\doublespace
+\hspace{8.5mm}
+\vspace{-1em}
+
+Much of the traffic accidents that occur on the roads are due to human cause. By 
+detecting road lanes systems can be developed for providing drivers assistance 
+to the driver or making sure that traffic laws are being enforced. This thesis 
+proposes techniques for detecting road lanes under two scenarios. The first is 
+by placing a camera in front of the car and detecting the lanes as driving. 
+Distances from the lane can be calculated which is a useful information for 
+systems like lane departure warning. The second is a camera placed at the side 
+of the road that detects traffic violations such as detecting vehicle overtaking 
+at steep curves. 
+
+%======================= Table of Contents =========================
+\setlength{\parskip}{0pt} 
+\newpage
+\addcontentsline{toc}{section}{Table of Contents}
+\tableofcontents
+
+% Page 2 begins
+
+%===================== List of Figures ======================
+\newpage
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+%\clearpage     % \clearpage ends the page, and also dumps out all floats.
+%\end{document}                     % Floats are things like tables and figures.
+
+%\clearpage     % \clearpage ends the page, and also dumps out all floats.
+
+% %===================== List of Tables ======================
+% \newpage
+% \addcontentsline{toc}{section}{List of Tables}
+% \listoftables
+% %\clearpage     % \clearpage ends the page, and also dumps out all floats.
+% %\end{document}                     % Floats are things like tables and figures.
+
+%\clearpage     % \clearpage ends the page, and also dumps out all floats.
+\setlength{\parskip}{12pt}

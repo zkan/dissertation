@@ -1,0 +1,334 @@
+%==========================================================
+%======================  FRONT STUFF ======================
+%==========================================================
+
+%======================= Cover Page =======================
+%\begin{document}
+\newpage
+
+% Set this page style from plain to empty, so the page number 
+% will not be put on this page.
+\pagestyle{empty}
+
+%\pagenumbering{roman}
+%\setcounter{page}{1}
+
+\addcontentsline{toc}{section}{Title Page}
+%\setlength{\footskip}{-15mm}
+\setlength{\textheight}{230mm}
+\setlength{\voffset}{10mm}
+\vskip -5em
+
+\begin{center}
+{ 
+%    \singlespace \uppercase{\bf Incremental Behavior Modeling and
+%    Suspicious Activity Detection} \par
+    \singlespace {\large \bf Incremental Behavior Modeling and
+    Suspicious Activity Detection} \par
+}
+\vskip 2em
+{
+    \lineskip 1.5em
+    \begin{tabular}[t]{c} by\\ \\ Kan Ouivirach
+    \end{tabular}\par
+}
+%\vskip 5.6em
+
+\vskip 3.5em
+\singlespace A dissertation submitted in partial fulfillment of the
+requirements for the\\ degree of Doctor of Philosophy in\\ Computer
+Science
+
+%\vskip 5em
+\vskip 0.5em
+{
+    \singlespace
+    \begin{center}
+        \begin{tabular}{rl}
+        \\[-1em]
+        Examination Committee: & Dr.\ Matthew N.\ Dailey (Chairperson) \\[-0.8em]
+                               & Dr.\ Nitin V.\ Afzulpurkar \\[-0.8em]
+                               & Dr.\ Supavadee Aramvith (External Expert) \\[-0.8em]
+                               & Dr.\ Sanparith Marukatat (External Expert) \\\\
+
+        External Examiner:     & Prof.\ James J.\ Clark \\[-0.8em]
+                               & Dept.\ of Electrical and Computer Engineering \\[-0.8em]
+                               & McGill University, Canada \\\\
+		
+        Nationality:     & Thai \\[-0.8em]
+        Previous Degree: & Master of Engineering in Computer Science\\[-0.8em]
+                         & Asian Institute of Technology, Thailand\\[-0.8em]
+        \\
+        Scholarship Donor: & Royal Thai Government Fellowship \\[-0.8em]
+        \\
+        \end{tabular}
+    \end{center}
+
+    \vskip 3.0em
+    \centerline{}
+    \vskip 2em
+}
+\end{center}
+\begin{center}
+    \singlespace Asian Institute of Technology\\ School of Engineering
+                  and Technology\\ Thailand\\ December 2013
+\end{center}
+\vfill
+
+%====================== DEDICATED PAGE ========================
+\newpage
+
+\pagestyle{empty}
+
+\begin{center}
+\vspace*{\fill}
+This dissertation is dedicated to my parents. 
+\vspace*{\fill}
+\end{center}
+
+%====================== ACKNOWLEDGEMENTS ======================
+\newpage
+
+\pagestyle{plain}
+
+% Maybe these two commands below are not necessary.
+\pagenumbering{roman}
+\setcounter{page}{3}
+
+\addcontentsline{toc}{section}{Acknowledgments}
+\onecolumn % Single-column.
+\if@twoside\else\raggedbottom\fi % Ragged bottom unless twoside option.
+\setlength{\footskip}{8mm}
+\begin{center}
+{
+    \large \bf Acknowledgments\\ \vskip 1em
+}
+\vskip 1em
+\end{center}
+\singlespace
+\doublespace
+\hspace{8.5mm}
+\vspace{-1em}
+
+This research work was accomplished through the support of many people. My most
+humble and sincere thanks to:
+
+As always, first and foremost, my beloved parents, who inspire me and offer
+endless unconditional love and support. My deepest thanks and heartfelt
+appreciation cannot go to anyone else but them.
+
+My tireless and trusted advisor, Dr.\ Matthew N.\ Dailey, for giving me
+invaluable advice, excellent guidance, strong encouragement, and support
+throughout my work with unbridled kindness and support. I also thank him for
+being very patient with me and always willingly answering all my questions. 
+
+My committee members, Dr.\ Nitin V.\ Afzulpurkar, Dr.\ Supavadee Aramvith, and
+Dr.\ Sanparith Marukatat, for their valuable insight, suggestions and
+constructive criticism. 
+
+My external examiner, Prof.\ James J.\ Clark, for his meticulous review and
+constructive commentary. 
+
+All of my friends at the AIT Vision and Graphics Lab (VGL) for enthusiastic
+discussions and comments on this work. In particular, Shashi Gharti, who
+conducted extensive research in areas related to the implementation of human
+tracking and feature extraction, and Phattanapon Rhienmora, who has been
+encouraging and supportive during the time I spent in pursuit of my Ph.D., and
+even to this day. I am eternally grateful to have been a part of this lab.
+
+CSIM secretaries, Ms.\ Pintip Thavornchan, Ms.\ Sireekant Thanwongpan, and Ms.\
+Siriporn Nanthasing, for their irreplaceable assistance during my studies, and
+without whom all things descend into chaos.
+
+AITians for healthy conversations and their true friendship while I was living
+on campus at AIT.
+
+Last but not least, the Royal Thai Government for the graduate scholarship that
+facilitated my studies at AIT. Without the scholarship, my studies at AIT would
+have been impossible.  
+
+%====================== ABSTRACT ======================
+\newpage
+\pagestyle{plain}
+\addcontentsline{toc}{section}{Abstract}
+\onecolumn % Single-column.
+\if@twoside\else\raggedbottom\fi % Ragged bottom unless twoside option.
+
+\setlength{\footskip}{8mm}
+
+\begin{center}
+{\large \bf Abstract \\ \vskip 1em}
+\vskip 1em
+\end{center}
+\singlespace
+\doublespace
+\hspace{8.5mm}
+\vspace{-1em}
+
+Video surveillance systems have become widespread tools for monitoring
+and law enforcement in public areas.  Due to increasing crime, video
+surveillance systems are being deployed in more and more places.
+Video surveillance systems are needed to help security personnel
+prevent and respond to criminal activity in a timely fashion.
+However, human monitoring becomes increasingly expensive and
+ineffective as the amount of video data increases. Also, manual review of
+all video footage is time-intensive and error-prone.
+
+Automated anomaly detection can help to improve the effectiveness of
+human observers by separating the video stream into a sequence of
+``normal'' and ``unusual'' events. However, much of the existing work
+has many limitations in this direction. Oftentimes, separate models
+for each distinct a priori known class of ``normal'' behavior are
+assumed.  This could lead to the problem of typical behavior evolving
+and becoming more diverse to the point that the false alarm rates
+increase.  The naive solution would be to retain all of the
+observation data and retrain the system periodically, but this
+requires storing all of the incoming data, requiring too much disk
+space. In this dissertation, we therefore propose and evaluate an
+efficient method for incremental automatic identification of
+suspicious behavior in video surveillance data.
+
+First, we develop a blob extraction method that segments blobs and an
+appearance-based blob tracking method that uses a forward-backward
+overlap method and color coherence vectors (CCVs) to maintain identity
+through blob merging and splitting cases.
+
+Second, we propose a new method for detecting shadows using a simple
+maximum likelihood formulation based on HSV color information. We find
+that the method outperforms standard shadow detection methods on three
+different real-world video surveillance data sets.
+
+Third, we propose a new method for clustering human behaviors in the
+context of video surveillance that is suitable for bootstrapping an
+anomaly detection module for intelligent video surveillance
+systems. We show that the method is extremely effective in separating
+anomalous from typical behaviors on real-world testbed video
+surveillance data.
+
+Fourth, we propose a \textit{semi-supervised} batch anomaly
+detection method that self-calibrates itself from a small bootstrap
+set in which each bootstrap sequence is manually labeled as normal or
+suspicious by a human operator. Our method proves extremely effective,
+with a very low false alarm rate at a 100\% hit rate.
+
+Finally, we propose an effective behavior modeling and suspicious
+activity detection method extending the batch method that
+incrementally learns scene-specific statistical models of human
+behavior without requiring storage of historical data. The incremental
+method's false alarm rate drops below that of the batch method on the
+same data.
+
+In experimental evaluations on real-world testbed video surveillance
+data sets, the proposed methods prove to be practical and effective at
+inducing scene-specific statistical models useful for bringing
+suspicious behavior to the attention of human security personnel.
+
+\setlength{\parskip}{0pt} 
+%======================= Table of Contents =========================
+\newpage
+\addcontentsline{toc}{section}{Table of Contents}
+\tableofcontents
+
+% Page 2 begins
+
+%===================== List of Figures ======================
+\newpage
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+
+%\clearpage     % \clearpage ends the page, and also dumps out all floats.
+%\end{document} % Floats are things like tables and figures.
+
+%\clearpage     % \clearpage ends the page, and also dumps out all floats.
+
+% %===================== List of Tables ======================
+\newpage
+\addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
+% %\clearpage     % \clearpage ends the page, and also dumps out all floats.
+% %\end{document} % Floats are things like tables and figures.
+
+%\clearpage     % \clearpage ends the page, and also dumps out all floats.
+
+% %===================== List of Symbols ======================
+\newpage
+\addcontentsline{toc}{section}{List of Symbols}
+
+\begin{center}
+    {\large \bf List of Symbols\\ \vskip 1em}
+    \vskip 1em
+\end{center}
+\singlespace
+
+\begin{table}[h]
+    \begin{tabular}{lll}
+        $\vec{f}_i^t$ & & Feature vector of track $i$ at time $t$. \\
+        $V$ & & Set of discrete categories (cluster IDs). \\
+        $U$ & & Number of categories.  \\
+        $\Theta$ & & Model estimate for shadows. \\ 
+        $sh$ & & Shadow. \\
+        $obj$ & & Object. \\
+        $L_i$ & & Log of the probability of a sequence $O_i$ given a trained HMM. \\
+        $\vec{O_i}$ & & Observation sequence $i$. \\
+        $T_i$ & & Number of observations in sequence $i$. \\
+        $M_c$ & & HMM that models the sequences in cluster $c$. \\
+        $p_c$ & & Optimal rejection threshold for cluster $c$. \\
+        $N_c$ & & Number of deviant patterns allowed in cluster $c$. \\
+        $z$ & & $z$-score. \\
+        $\theta_z$ & & Global alarm threshold. \\
+        
+        
+    \end{tabular}
+\end{table}
+
+% %===================== List of Acronyms ======================
+\newpage
+\addcontentsline{toc}{section}{List of Acronyms}
+
+\begin{center}
+    {\large \bf List of Acronyms\\ \vskip 1em}
+    \vskip 1em
+\end{center}
+
+\singlespace
+
+\begin{table}[h]
+    \begin{tabular}{lll}
+        CCTV   & & Closed-Circuit Television. \\
+        MoG    & & Mixture of Gaussian. \\
+        CCV    & & Color Coherence Vector. \\
+        DNM    & & Deterministic Nonmodel-Based Shadow Detection. \\
+        NCC    & & Normalized Cross-Correlation. \\
+        ML     & & Maximum Likelihood. \\
+        IML    & & Incremental Maximum Likelihood. \\
+        EM     & & Expectation Maximization. \\  
+        DBN    & & Dynamic Bayesian Network. \\
+        $k$-NN & & $k$-Nearest Neighbors. \\
+        SVM    & & Support Vector Machine. \\
+        PCA    & & Principal Component Analysis. \\
+        MDL    & & Minimum Description Length. \\
+        GMM    & & Gaussian Mixture Model. \\
+        HMM    & & Hidden Markov Model. \\
+        DTW    & & Dynamic Time Warping. \\ 
+        LRT    & & Likelihood Ratio Test. \\
+        ROC    & & Receiver Operating Characteristic. \\
+        EER    & & Equal Error Rate.
+    \end{tabular}
+\end{table}
+
+\newpage
+
+\begin{table}[h]
+    \begin{tabular}{lll}
+        TP     & & Number of True Positives. \\ 
+        FP     & & Number of False Positives. \\
+        TN     & & Number of True Negatives. \\ 
+        FN     & & Number of False Negatives. \\
+        TPR    & & True Positive Rate. \\ 
+        FPR    & & False Positive Rate. 
+    \end{tabular}
+\end{table}
+
+\setlength{\parskip}{12pt}
+

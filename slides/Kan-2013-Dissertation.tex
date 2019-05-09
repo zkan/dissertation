@@ -1,0 +1,127 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+    \setbeamertemplate{background canvas}[square]
+    \pgfdeclareimage[height=4em,interpolate=true]{aitlogo}{figures/ait-logo.jpg}
+    \titlegraphic{\pgfuseimage{aitlogo}}
+    %\usetheme{default}
+    \usetheme{Madrid}
+    \usecolortheme{rose}
+    \usefonttheme[onlysmall]{structurebold}
+}
+
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade,graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{graphics}
+\usepackage{ragged2e}
+\usepackage[latin1]{inputenc}
+\usepackage{colortbl}
+\usepackage[absolute,overlay]{textpos}
+%\setlength{\TPHorizModule}{30mm}
+%\setlength{\TPVertModule}{\TPHorizModule}
+%\textblockorigin{10mm}{10mm}
+\usepackage[english]{babel}
+\usepackage{listings}
+%\setbeamercovered{dynamic}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{algcompatible}
+
+% Change this to 1 to get the short version.
+\def\short{1}
+
+\AtBeginSection[]{
+    \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+    \end{frame}
+}
+
+\title[Final Dissertation Defense] {
+    Final Dissertation Defense \\
+    {\bf Incremental Behavior Modeling and Suspicious 
+    Activity Detection}
+}
+
+\author[KO] {
+    Kan Ouivirach
+}
+\institute[CSIM-AIT] {
+    Computer Science and Information Management\\
+    Asian Institute of Technology
+}
+\date{August 20, 2013}
+
+% My math definitions
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+%\newcommand{\mat}[1]{\mathtt{#1}}
+%\newcommand{\ten}[1]{\mathcal{#1}}
+%\newcommand{\crossmat}[1]{\begin{bmatrix} #1 \end{bmatrix}_{\times}}
+%\renewcommand{\null}[1]{{\cal N}(#1)}
+%\newcommand{\class}[1]{{\cal C}_{#1}}
+%\def\Rset{\mathbb{R}}
+%\def\Pset{\mathbb{P}}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+%\DeclareMathOperator*{\sign}{sign}
+%\def\norm{\mbox{$\cal{N}$}}
+
+%\newcommand{\stereotype}[1]{\guillemotleft{{#1}}\guillemotright}
+
+%\newcommand{\myfig}[3]{\centerline{\includegraphics[width={#1}]{{#2}}}
+%    \centerline{\scriptsize #3}}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%             CONTENTS START HERE
+
+%\setbeamertemplate{navigation symbols}{}
+
+\frame{\titlepage}
+
+%--------------------------------------------------------------------
+%\part<presentation>{Part name}
+%
+%\frame{\partpage}
+
+% Define a counter's name
+%\newcounter{Lcount}
+
+\begin{frame}
+    \frametitle{Deep and Heartfelt Thanks}
+
+    My advisor: 
+    \begin{itemize}
+        \item Dr.\ Matthew N.\ Dailey 
+    \end{itemize}
+    My committee:
+    \begin{itemize}
+        \item Dr.\ Nitin V.\ Afzulpurkar
+        \item Dr.\ Supavadee Aramvith
+        \item Dr.\ Sanparith Marukatat
+    \end{itemize}
+
+\end{frame}
+
+%--------------------------------------------------------------------
+
+\include{intro}
+%\include{related-work}
+\include{blobanalysis}
+\include{shadow}
+\include{clustering}
+\include{batch}
+\include{incremental}
+\include{conclusion}
+\include{comments}
+
+%--------------------------------------------------------------------
+
+\end{document}
+

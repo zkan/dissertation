@@ -1,0 +1,33 @@
+Yang et al. model the body pose as a latent variable for action
+recognition.
+
+List of Acronyms
+
+CCTV - Closed-Circuit Television
+HMM - Hidden Markov Model
+MoG - mixture of Gaussian
+CCV - Color Cohenrence Vector
+DNM - Deterministic Nonmodel-Based
+NCC - Normalized Cross-Correlation
+ML - Maximum Likelihood
+GMM - Gaussian Mixture Model
+DBN - Dynamic Bayesian Network
+DTW - Dynamic Time Warping
+MDL - Minimum Description Length
+k-NN - k-Nearest Neighbors
+SVM - Support Vector Machine
+PCA - Principal Component Analysis
+ROC - Receiver Operating Characteristic
+IML - Incremental Maximum Likelihood
+EM - Expectation Maximization
+TP - True Positive
+FP - False Positive
+TN - True Negative
+FN - False Negative
+TPR - True Positive Rate
+FPT - False Positive Rate
+LRT - Likelihood Ratio Test
+EER - Equal Error Rate
+
+
+

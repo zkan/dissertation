@@ -1,0 +1,48 @@
+\documentclass[12pt]{article}
+
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{pdflscape}
+\usepackage{times}
+
+%\textwidth 0.5in
+\oddsidemargin -3.1in
+\topmargin 0.15in
+%\textheight 8.6in
+
+\pagestyle{empty}
+
+\begin{document}
+
+\eject \pdfpagewidth=1.2in \pdfpageheight=9.4in
+
+\begin{landscape}
+\begin{table}[t]
+    \centering
+    \begin{tabular}{c|cccc|cccc|cccc}
+      \hline
+      \multirow{2}{*}{Method} 
+      & \multicolumn{4}{c|}{Hallway} 
+      & \multicolumn{4}{c|}{Laboratory} 
+      & \multicolumn{4}{c}{Highway} \\
+      \cline{2-13}
+      & $\eta$ & $\xi$ & Precision & $F_1$ 
+      & $\eta$ & $\xi$ & Precision & $F_1$ 
+      & $\eta$ & $\xi$ & Precision & $F_1$ \\
+      \hline \hline
+      ML   & 95.36\% & 91.13\% & 91.41\% & 93.34\% & 
+             98.41\% & 75.56\% & 88.52\% & 93.14\% & 
+             93.38\% & 45.27\% & 51.58\% & 66.42\% \\
+      DNM  & 90.71\% & 76.4\%  & 79.17\% & 84.49\% & 
+             96.59\% & 69.93\% & 85.27\% & 90.51\% & 
+             48.77\% & 82.7\%  & 62.78\% & 54.51\% \\
+      NCC  & 84.94\% & 94.15\% & 93.95\% & 89.17\% & 
+             79.42\% & 95.43\% & 96.73\% & 86.71\% & 
+             9.45\%  & 99.93\% & 98.62\% & 17.04\% \\
+      \hline
+    \end{tabular}
+\end{table}
+\end{landscape}
+
+\end{document}
+

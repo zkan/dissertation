@@ -1,0 +1,93 @@
+% EE Thesis/Dissertation
+% Please see http://ee.tamu.edu/~tex for information about EE Thesis.
+
+\documentclass[a4paper]{aitthesis}
+
+\usepackage{graphicx}
+\usepackage{latexsym}
+\usepackage{amssymb,amsthm,amsmath}
+%\usepackage{longtable,booktabs}
+\usepackage[notocbib]{apacite}
+\usepackage{verbatim}
+\usepackage{multirow}
+\newcommand{\oops}[1]{\bf{#1}}
+\newcommand{\ga}{\bar{\gamma}}
+\newcommand{\myint}{\int_0^{\infty}}
+\usepackage{bm}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{cancel}
+
+% Use this for subfigures
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+\usepackage{placeins}
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathrm{#1}}
+
+\newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
+
+%%%%%%%%%%%
+% Process only the files in backets. ie title page and chapter 1 {title, ch1}
+%     Be sure to remove the % before \includeonly to use this feature.
+
+%\includeonly{title,ch1}
+
+%%%%%%%%%%%
+% Type of document.
+% Keep only one of the next four lines.
+
+%\renewcommand{\type}{Dissertation Proposal}
+%\renewcommand{\type}{Dissertation}
+%\renewcommand{\type}{Thesis Proposal}
+%\renewcommand{\type}{Thesis}
+
+%%%%%%%%%%%
+% Type of degree.
+% Keep only one of the next two lines.
+
+%\renewcommand{\degree}{Doctor of Engineering}  % For dissertation
+%\renewcommand{\degree}{Master of Engineering}   % For thesis
+
+%%%%%%%%%%%
+% Department
+% Change the department if not in ELEN
+
+%\renewcommand{\major}{Electrical Engineering}  % Change if you are not in ELEN
+
+\begin{document}
+
+
+\pagenumbering{roman}
+\pagestyle{plain}
+\include{frontstuff}
+\small
+
+\pagenumbering{arabic}
+\setlength{\headheight}{12pt}
+\pagestyle{plain}
+\include{ch1}
+%\include{ch2}
+%\include{ch3}
+%\include{ch4}
+%\include{ch5}
+
+\addcontentsline{toc}{chapter}{ \hskip 4em References}
+
+\bibliographystyle{apacite}
+\bibliography{references}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                 %
+%                            APPENDICES                           %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage\pagestyle{plain}
+\theappendix
+\addcontentsline{toc}{chapter}{ \hskip 4em Appendixes}
+%\include{append1}
+%\include{append2}
+
+\end{document}

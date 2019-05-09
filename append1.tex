@@ -1,0 +1,128 @@
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\begin{center}
+{\bf Appendix A\\ \vskip 1em Configuration Files\\ \vskip 1em}
+\vskip 1em
+\end{center}
+\singlespace
+ 
+{\bf Asterisk PBX Configuration File}\\ \vskip 1em
+Here're the configuration files in thesis.
+%\begin{figure}
+%\begin{center}
+%	\includegraphics[width=6in]{figures/seq-diagram.jpg}
+%	\caption{Sequence Diagram} \label{fig:seq-diagram}
+%\end{center}
+%\end{figure}
+
+%\begin{figure}[ht]
+%\includegraphics[width = 15cm,  height = 18cm, keepaspectratio = true]{figapp_2.png} 
+%\caption[xxx]{/etc/asterisk/zapata.conf, This is a file configuration for using hardware interface. To see more details how to config or what the meaning of each parameter is, at \url{http://www.voip-info.org/wiki-Asterisk+config+zapata.conf} or \url{http://www.digium.com/asterisk_handbook/zapata.conf.pdf}}
+%\end{figure} 
+%\begin{figure}[ht]
+%\includegraphics[width = 15cm,  height = 6cm, keepaspectratio = true]{figapp_1.png} 
+%\caption[x]{/etc/zaptel.conf, This configuration was used in Asterisk PBX box to config your hardware interface, as described in section 4.1. \cite{zaptel}}
+%\end{figure} 
+%\begin{figure}[ht]
+%\includegraphics[width = 15cm,  height = 18cm, keepaspectratio = true]{figapp_3.png} 
+%\caption{/etc/asterisk/sip.conf, This configuration file uses for setting Asterisk sip channel, for both inbound and outbound calls. SIP stands for session initiation protocol. SIP is the connection that connects a free Internet phone, using VOIP, to other phones. This protocol allow user talk over the Internet.}
+%\end{figure} 
+%\begin{figure}[ht]
+%\includegraphics[width = 15cm,  height = 18cm, keepaspectratio = true]{figapp_4.png} 
+%\caption[x]{\url{/etc/asterisk/sip_additional.conf}, Asterisk PBX is a expandable and flexible system that allow controlling ``sip.conf" from outside by using \#include statement to insert another file into sip.conf }
+%\end{figure} 
+% 
+%\begin{figure}[ht]
+%\includegraphics[width = 13cm, keepaspectratio = true]{extension1.png} 
+%\caption[x]{\url{/etc/asterisk/extension.conf}, Asterisk PBX allows user config the extension rule for a specific context in the extension.conf file. The contexts need to exist if they are defined in sip.conf or zapata.conf. }
+%\end{figure} 
+%
+%\begin{figure}[ht]
+%\includegraphics[width = 13cm, keepaspectratio = true]{extension2.png} 
+%\caption[x]{Asterisk PBX is a expandable and flexible system that allow controlling include statement to insert another file into extension1.conf }
+%\end{figure} 
+%
+%{\bf Zaptel Installation Troubleshooting}
+%\begin{enumerate}
+%\item use zttool 
+%\item type a command ``cat /proc/zaptel/*" to see README for more details.
+%\item type a command ``zap show channels" at the Asterisk CLI (Command Line Interface). If Asterisk doesn't find this command, it means that zap module is not loaded completely. 
+%\item use ztmonitor in shell to check and tune the incomming and outgoing telephone sound\\
+%
+%\# ztmonitor 1 -v (the screen will show \#\#\#\#\# in part of rx which is the incomming sound leve and tx will not show \#\#\# if telephone does not have any outgoing call). After finish tuning in zapata.conf, Asterisk need to reload chan\_zap module to effect the new configuration.\\
+%
+%asterisk*CLI$>$ reload chan\_zap.so \\
+%
+%\end{enumerate}
+%{\bf Zaptel Configuration Troubleshooting}\\ \vskip 1em
+%To check that zaptel.conf is correctly configured by typing this command in shell prompt\\
+%
+%\# /sbin/ztcfg -vvvv \\
+%
+%If it shows the successful channel details and exits silently, the configuration is correct. 
+%If you get a message like:\\
+%\\
+%`` ZT\_CHANCONFIG failed on channel 1: Invalid argument (22) \\
+% Did you forget that FXS interfaces are configured with FXO signalling \\
+% and that FXO interfaces use FXS signalling?  " \fullcite{zaptel} \\ 
+
+then the configuration is incorrect. It may also be helpful to check your /var/log/messages logfile to see what messages the zaptel, wcfxs and/or wcfxo kernel modules generated when they were loaded.
+
+
+%%%\section{Timeline}
+%%%I plan my timeline by using the Rational Unified Process (RUP) which is an iterative software development process. The main purpose of this process is to mitigate the high risks first. It has 4 phases: inception, elaboration, construction, transition. I arrange 1 month for each iteration and summarize my timeline as follows:
+%%%
+%%%\begin{enumerate}
+%%%
+%%%\item \textbf{Inception phase} (see Figure \ref{fig:rup-inception}) will be started on August 08, 2007 to October 05, 2007 over the period of 2 months. I divide this phase into 2 iterations.
+%%%	\begin{enumerate}
+%%%	\item The first iteration is over the period of 1 month starting from August 08, 2007 to August 30, 2007. I will lay out the business case, define the scope, collect the requirements, and initiate use case. My feasibility studies are find papers related to my thesis work and to see how ZoneMinder works.
+%%%	\item The seceond iteration is over the period of 1 month starting from September 03, 2007 to October 05, 2007. I will refine the scope, requirements, and use case. Identify main risks. And draw UML diagrams. The feasibility studies are still the same.
+%%%	\end{enumerate}
+%%%	
+%%%\item \textbf{Elaboration phase} (see Figure \ref{fig:rup-elaboration}) will be started on October 08, 2007 to November 30, 2007 over the period of 2 months. I divide this phase into 2 iterations.
+%%%  \begin{enumerate}
+%%%  \item The third iteration is over the period of 1 month starting from October 08, 2007 to November 02, 2007. I will start creating the prototype as well as collecting the readl data. I have to start writing my proposal in this iteration.
+%%%  \item The fourth iteration is over the period of 1 month starting from November 05, 2007 to November 30, 2007. I will refine the UML diagrams and finish the prototype. I will propose my thesis topic in this iteration. Then I will develop and improve each part of my work.
+%%%  \end{enumerate}
+%%%  
+%%%\item \textbf{Construction phase} (see Figure \ref{fig:rup-construction}) will be started on December 03, 2007 to February 29, 2008 over the period of 3 months. I divide this phase into 3 iterations.
+%%%  \begin{enumerate}
+%%%  \item The fifth iteration is over the period of 1 month starting from December 03, 2007 to December 31, 2007. 
+%%%I will analyze the information extracted from images and develop the feature extraction's part.
+%%%  \item The sixth iteration is over the period of 1 month starting from January 02, 2008 to February 01, 2008. 
+%%%I will analyze the extracted features and develop the behavior profiling's part. And I will start integrating my module into ZoneMinder.
+%%%  \item The seventh iteration is over the period of 1 month starting from February 01, 2007 to February 29, 2007. I will do the experiment and measure the effectiveness of my module in this iteration. My module also will be integrated into ZoneMinder. After that, I will start testing the system.
+%%%  \end{enumerate}
+%%%  
+%%%\item \textbf{Transition phase} (see Figure \ref{fig:rup-transition}) will be started on March 03, 2008 to March 28, 2008 over the period of 1 month. I have only 1 iteration in this phase. Therefore, in this eighth iteration, I will focus on the documentation and testing.
+%%%  
+%%%\end{enumerate}
+%%%
+%%%
+%%%\begin{figure}
+%%%\begin{center}
+%%%	\includegraphics[width=5in]{figures/rup-inception.jpg}
+%%%	\caption{Timeline: Inception Phase} \label{fig:rup-inception}
+%%%\end{center}
+%%%\end{figure}
+%%%
+%%%\begin{figure}
+%%%\begin{center}
+%%%	\includegraphics[width=5in]{figures/rup-elaboration.jpg}
+%%%	\caption{Timeline: Elaboration Phase} \label{fig:rup-elaboration}
+%%%\end{center}
+%%%\end{figure}
+%%%
+%%%\begin{figure}
+%%%\begin{center}
+%%%	\includegraphics[width=5in]{figures/rup-construction.jpg}
+%%%	\caption{Timeline: Construction Phase} \label{fig:rup-construction}
+%%%\end{center}
+%%%\end{figure}
+%%%
+%%%\begin{figure}
+%%%\begin{center}
+%%%	\includegraphics[width=5in]{figures/rup-transition.jpg}
+%%%	\caption{Timeline: Transition Phase} \label{fig:rup-transition}
+%%%\end{center}
+%%%\end{figure}

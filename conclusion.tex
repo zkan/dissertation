@@ -1,0 +1,126 @@
+\setlength{\footskip}{8mm}
+
+\chapter{Conclusion and Recommendations}
+\label{ch:conclusion}
+
+\textit{We summarize the contributions of the dissertation and
+provide recommendations for further work.}
+
+\section{Conclusion}
+
+In this dissertation, we have proposed and evaluated a new method for
+bootstrapping scene-specific anomalous human behavior detection systems that
+incrementally learns behavior models without requiring storage of large
+databases of training data. The method requires minimal involvement of a human
+operator; the only required action is to label the patterns in a small
+bootstrap set as normal or anomalous and then to label false positive alarms as
+normal when they occur.
+
+Our contributions are five-fold. First, we have developed a blob extraction and
+appearance-based blob tracking method (explained in
+Chapter~\ref{ch:blobanalysis}) that segments blobs and generate blobs'
+trajectories as input to the behavior modeling module. Although the method
+works well with typical surveillance data, the blob tracking method is not
+always robust for complex events involving multiple people. 
+
+Second, we propose a new method for detecting shadows using a simple maximum
+likelihood approach based on color information (explained in
+Chapter~\ref{ch:shadow}). We extend the deterministic nonmodel-based approach,
+designing a parametric statistical model-based approach.  In our experiments,
+we find that our method works well in many cases but misclassifies shadow
+pixels in regions that have similar color to the background.  
+
+Third, we propose and evaluate a new method for clustering human behaviors
+(explained in Chapter~\ref{ch:clustering}). The method can be used to bootstrap
+an anomaly detection module for intelligent video surveillance systems. The
+combination of DTW with the type of linear HMMs we use in this work is
+extremely effective in separating anomalous from typical behaviors on
+real-world testbed video surveillance data. One main limitation of this work is
+that the method creates a large number of single-sequence clusters that would
+have to be manually labeled as normal or abnormal by security personnel.
+
+Fourth, we propose a \textit{semi-supervised} method for automatic
+identification of suspicious behavior from a small bootstrap set (explained in
+Chapter~\ref{ch:batch}). The method partitions the bootstrap set into clusters
+then assigns new observation sequences to clusters based on statistical tests
+of HMM log likelihood scores.  Our experiments find that the size of the
+bootstrap set could affect the results of the current system.  With more
+bootstrap data we tend to discover more compact behavior classes, leading to
+better anomaly detection rates in practice. The main limitation of the method
+proposed in this chapter is that it never learns any new typical behavior over
+time. This requires a more adaptive approach to learn new behaviors over time.
+We address this issue in the next contribution. 
+
+Fifth, we propose an incremental behavior modeling and suspicious activity
+detection method (explained in Chapter~\ref{ch:incremental}) that incrementally
+learns scene-specific statistical models of human behavior without requiring
+storage of large databases of training data.
+
+The experimental results presented in this dissertation are extremely
+promising, demonstrating that our approach is a practical and effective
+solution to the problem of inducing scene-specific statistical models useful
+for bringing suspicious behavior to the attention of human security personnel.
+Deploying our system on a large video sensor network would potentially lead to
+substantial increases in the productivity and proactivity of human monitors.
+
+That said, as mentioned above, the work has several limitations that could be
+addressed with further research. Next, I provide recommendations for future
+research.
+
+\section{Recommendations}
+
+Our approach can be extended to larger-scale situations as long as typical
+behavior can be modeled in terms of the spatio-temporal motion of foreground
+blobs.  It could also be extended to recognize more complex events involving
+multiple persons --- we believe that we can handle interactions between
+pedestrians, for example in pickpocket and assault events, within the current
+framework of temporal statistical models for individual humans by including
+observation features that characterize a person's interaction with others while
+in the scene.  Integrating with pedestrian detection and tracking methods that
+rely on body part detection and tracking rather than motion blob tracking might
+help capture a larger proportion of the kinds of unusual behaviors we would
+observe in building entrances or office hallways.
+
+Although the current method would work well for most building entrances, office
+building hallways, and similar environments, the blob tracking process would
+not be robust for scenes with dense crowds. Integrating with pedestrian
+tracking methods for crowds \shortcite{ali12crowds} would be a potential
+solution to the problem.
+
+In some cases, our shadow detection method misdetects shadow pixels as object
+pixels due to similar colors between the object and the background and unclear
+background texture in shadow regions. Incorporating geometric or shadow region
+shape priors would potentially improve detection and discrimination rates.
+
+Next, constructing a fixed codebook to quantize the feature space may be
+inappropriate for incremental approaches since the codebook would need to be
+revised over time to account for changing ``typical'' behaviors.  It may be
+better to take a probabilistic generative approach to the assignment of feature
+vectors to discrete categories rather than making hard assignments.
+
+We found in the experiments that our clustering method tends to construct
+unbalanced dendrogram structures that leads our method to create a large number
+of single-sequence clusters. An approach to maintain the balanced dendrogram
+structure could address this issue. 
+
+Also, our current system can add new HMMs but cannot remove them. Over time,
+the number of HMMs would grow without bound.  It would be better to
+periodically merge similar models or remove old models that no longer represent
+typical behavior. Since each HMM has the same structure, it would be very
+straightforward to check for pairs of similar models and merge them.
+
+The clustering results suggest it is likely that the patterns DTW groups
+together are perfectly suited for modeling by linear HMMs with bypass
+transitions. We may further explore this idea in future work.
+
+In the experimental results for our incremental method, we have shown that
+local event processing is more effective than global event processing on our
+data set.  It would be interesting to compare to a hybrid approach in which we
+apply the global method to blocks in an image rather than the whole image.  
+
+Lastly, we will explore integrating the behavior understanding and anomaly
+detection algorithms into a complete video surveillance system such as
+ZoneMinder \shortcite{zoneminder}.
+
+\FloatBarrier
+

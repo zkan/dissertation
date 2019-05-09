@@ -1,0 +1,9 @@
+system("latexdiff first-revision/dissertation.tex dissertation.tex > dissertation-diff.tex");
+system("latexdiff first-revision/frontstuff.tex frontstuff.tex > frontstuff-diff.tex");
+system("latexdiff first-revision/intro.tex intro.tex > intro-diff.tex");
+system("latexdiff first-revision/blobanalysis.tex blobanalysis.tex > blobanalysis-diff.tex");
+system("latexdiff first-revision/shadow.tex shadow.tex > shadow-diff.tex");
+system("latexdiff first-revision/clustering.tex clustering.tex > clustering-diff.tex");
+system("latexdiff first-revision/batch.tex batch.tex > batch-diff.tex");
+system("latexdiff first-revision/incremental.tex incremental.tex > incremental-diff.tex");
+system("latexdiff first-revision/conclusion.tex conclusion.tex > conclusion-diff.tex");

@@ -1,0 +1,109 @@
+\documentclass{article}
+
+\usepackage{a4}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{times}
+
+\newcommand{\authnote}[1]{\begin{center}\fbox{\begin{minipage}{6.3in}
+{#1}\end{minipage}}\end{center}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\textwidth 6in
+\oddsidemargin 0.15in
+\topmargin -0.5in
+\textheight 10in
+\doublespacing
+
+\date{}
+
+\begin{document}
+
+\pagestyle{empty}
+\thispagestyle{empty}
+
+%\begin{center}
+%{\LARGE \bf \noindent Incremental Behavior Modeling and Suspicious
+%  Activity Detection}
+%\end{center}
+
+\begin{table}
+    \begin{tabular}{ll}
+        {\large \bf Name:}  & {\large Kan Ouivirach} \\
+        {\large \bf ID:}    & {\large 107830} \\
+        {\large \bf Title:} & {\large Incremental Behavior Modeling 
+                              and Suspicious Activity Detection} \\
+        {\large \bf Type:}  & {\large Dissertation}
+    \end{tabular}
+\end{table}
+
+\vspace{0.3in}
+{\bf \noindent Abstract}\\
+
+\noindent Video surveillance systems have become widespread tools for monitoring
+and law enforcement in public areas.  Due to increasing crime, video
+surveillance systems are being deployed in more and more places.
+Video surveillance systems are needed to help security personnel
+prevent and respond to criminal activity in a timely fashion.
+However, human monitoring becomes increasingly expensive and
+ineffective as the amount of video data increases. Also, manual review of
+all video footage is time-intensive and error-prone.\\
+
+\noindent Automated anomaly detection can help to improve the effectiveness of
+human observers by separating the video stream into a sequence of
+``normal'' and ``unusual'' events. However, much of the existing work
+has many limitations in this direction. Oftentimes, separate models
+for each distinct a priori known class of ``normal'' behavior are
+assumed.  This could lead to the problem of typical behavior evolving
+and becoming more diverse to the point that the false alarm rates
+increase.  The naive solution would be to retain all of the
+observation data and retrain the system periodically, but this
+requires storing all of the incoming data, requiring too much disk
+space. In this dissertation, we therefore propose and evaluate an
+efficient method for incremental automatic identification of
+suspicious behavior in video surveillance data.\\
+
+\noindent First, we develop a blob extraction method that segments blobs and an
+appearance-based blob tracking method that uses a forward-backward
+overlap method and color coherence vectors (CCVs) to maintain identity
+through blob merging and splitting cases.\\
+
+\noindent Second, we propose a new method for detecting shadows using a simple
+maximum likelihood formulation based on HSV color information. We find
+that the method outperforms standard shadow detection methods on three
+different real-world video surveillance data sets.\\
+
+\noindent Third, we propose a new method for clustering human behaviors in the
+context of video surveillance that is suitable for bootstrapping an
+anomaly detection module for intelligent video surveillance
+systems. We show that the method is extremely effective in separating
+anomalous from typical behaviors on real-world testbed video
+surveillance data.\\
+
+\newpage
+
+\noindent Fourth, we propose a \textit{semi-supervised} batch anomaly
+detection method that self-calibrates itself from a small bootstrap
+set in which each bootstrap sequence is manually labeled as normal or
+suspicious by a human operator. Our method proves extremely effective,
+with a very low false alarm rate at a 100\% hit rate.\\
+
+\noindent Finally, we propose an effective behavior modeling and suspicious
+activity detection method extending the batch method that
+incrementally learns scene-specific statistical models of human
+behavior without requiring storage of historical data. The incremental
+method's false alarm rate drops below that of the batch method on the
+same data.\\
+
+\noindent In experimental evaluations on real-world testbed video surveillance
+data sets, the proposed methods prove to be practical and effective at
+inducing scene-specific statistical models useful for bringing
+suspicious behavior to the attention of human security personnel.\\
+
+\noindent {\bf Keywords:} hidden Markov models, incremental learning, 
+behavior clustering, sufficient statistics, anomaly detection, bootstrapping,  
+multiple blob tracking, shadow detection
+
+\end{document}
+

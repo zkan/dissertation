@@ -1,0 +1,164 @@
+
+%--------------------------------------------------------------------
+\section{Conclusion and Recommendations}
+%--------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Conclusion and Recommendations}
+    \framesubtitle{Conclusion}
+
+    Our contributios are five-fold.
+    \begin{enumerate}
+        \item Develop a blob extraction and appearance-based 
+            blob tracking method that segments blobs and generate 
+            blobs' trajectories as input to the behavior modeling module.
+        \item Propose a new method for detecting shadows using a 
+            simple maximum likelihood approach based on color information. 
+            We extend the deterministic nonmodel-based approach, designing 
+            a parametric statistical model-based approach.
+        \item Propose and evaluate a new method for clustering human 
+            behaviors. This method can be used to bootstrap an anomaly 
+            detection module for intelligent video surveillance systems. 
+        \item Propose a \textit{semi-supervised} method for automatic 
+            identification of suspicious behavior from a small bootstrap 
+            set.
+    \end{enumerate}
+
+\end{frame}
+
+%--------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Conclusion and Recommendations}
+    \framesubtitle{Conclusion (cont.)}
+
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item Propose an incremental behavior modeling and suspicious 
+            activity detection method that incrementally learns scene-specific 
+            statistical models of human behavior without requiring storage of 
+            large databases of training data. 
+    \end{enumerate}
+
+    \medskip
+
+    The experimental results are extremely promising, demonstrating that our 
+    approach is a practical and effective solution to the problem of inducing 
+    scene-specific statistical models useful for bringing suspicious behavior 
+    to the attention of human security personnel.
+
+\end{frame}
+
+%--------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Conclusion and Recommendations}
+    \framesubtitle{Recommendations}
+
+    \begin{enumerate}
+        \item Our approach can be extended to larger-scale situations 
+            as long as typical behavior can be modeled in terms of the 
+            spatio-temporal motion of foreground blobs. 
+        \item It could also be extended to recognize more complex events involving 
+            multiple persons -- we believe that we can handle interactions between 
+            pedestrians within the current framework of temporal statistical 
+            models for individual humans by including 
+            observation features that characterize a person's interaction with others 
+            while in the scene. 
+        \item Integrating with pedestrian detection and tracking 
+            methods that rely on body part detection and tracking rather 
+            than motion blob tracking might help 
+            capture a larger proportion of the kinds of unusual 
+            behaviors we would observe in building entrances or office hallways.
+    \end{enumerate}
+
+\end{frame}
+
+%--------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Conclusion and Recommendations}
+    \framesubtitle{Recommendations (cont.)}
+
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item Although, it would work well for most building entrances, 
+            office building 
+            hallways, and similar environments, the blob tracking 
+            process would not be
+            robust for scenes with dense crowds. Integrating with 
+            pedestrian tracking 
+            methods for crowds (Ali \& Dailey, 2012) would be a 
+            potential solution 
+            to the problem.
+        \item In some cases, our shadow detection method misdetects 
+            shadow pixels 
+            as object pixels due to similar
+            colors between the object and the background and unclear 
+            background 
+            texture in shadow regions. Incorporating geometric or shadow 
+            region 
+            shape priors would potentially improve detection and 
+            discrimination rates. 
+    \end{enumerate}
+
+\end{frame}
+
+%--------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Conclusion and Recommendations}
+    \framesubtitle{Recommendations (cont.)}
+        
+    \begin{enumerate}
+        \setcounter{enumi}{5}
+        \item Next, constructing a fixed codebook to quantize the 
+            feature space 
+            may be inappropriate for incremental approaches since 
+            the codebook would 
+            need to be revised over time to account for changing 
+            ``typical'' behaviors. 
+            It may be better to take a probabilistic generative approach 
+            to the assignment of 
+            feature vectors to discrete categories rather than making 
+            hard assignments.
+        \item Also, our current system can add new HMMs but cannot remove them. 
+            Over time, the number of
+            HMMs would grow without bound. It would be better to periodically merge 
+            similar models or remove
+            old models that no longer represent typical behavior. Since each HMM has 
+            the same structure, it
+            would be very straightforward to check for pairs of similar models 
+            and merge them.
+    \end{enumerate}
+
+\end{frame}
+
+%--------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{Conclusion and Recommendations}
+    \framesubtitle{Recommendations (cont.)}
+        
+    \begin{enumerate}
+        \setcounter{enumi}{7}
+            \item The clustering results suggest it is likely that the patterns DTW 
+                groups together 
+                are perfectly suited
+                for modeling by linear HMMs. We plan to further explore this idea 
+                in future work.
+            \item In the experimental results for our incremental method, we have 
+                shown that local 
+                event processing is more effective than global event processing 
+                on our data set. 
+                It would be interesting to compare to a hybrid approach in which we 
+                apply the global 
+                method to blocks in an image rather than the whole image.
+            \item Lastly, we will explore integrating the behavior understanding and 
+                anomaly detection algorithms 
+                into a complete video surveillance system such as 
+                ZoneMinder (Coombes, 2007).
+    \end{enumerate}
+
+\end{frame}
+

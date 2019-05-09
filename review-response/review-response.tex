@@ -1,0 +1,431 @@
+\documentclass{article}
+
+\usepackage{a4}
+\usepackage{url}
+%\urlstyle{rm}  % or sf, depending on the font
+\usepackage{amsmath}
+%\usepackage [table]{xcolor}
+%\usepackage{apacite}
+
+\newcommand{\authnote}[1]{\begin{center}\fbox{\begin{minipage}{6.3in}
+{#1}\end{minipage}}\end{center}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+\textwidth      6.75in
+\oddsidemargin -0.25in
+\topmargin     -0.75in
+\textheight     10in
+
+\title{\textbf{Response to External Examiner Report}\\[0.5em] 
+    {\small ``Incremental Behavior 
+    Modeling and Suspicious Activity Detection''}}
+
+    \author{Kan Ouivirach}
+\date{June 11, 2013}
+
+\begin{document}
+
+\maketitle
+
+\noindent
+I would like to thank Prof.\ James Clark for
+the careful review and constructive comments. I have
+carefully studied the comments, addressed them, and incorporated
+corresponding changes to my dissertation. \\ 
+
+%\noindent 
+%I summarize the major changes to the manuscript as follows.
+%content in each section. The major changes include:
+
+%\begin{itemize}
+%    \item adding a new Related Work section to further extend the survey
+%        of related topics in the literature;
+%    \item dropping the comparison to the traditional machine learning
+%        methods since the results are already published in our conference
+%        paper [41];
+%    \item adding the comparison with HMM-based methods using a global
+%        representation and scoring methods similar to those of Xiang and
+%        Gong [33].
+%\end{itemize} 
+
+%\noindent
+%\textbf{References:}\\
+
+%\noindent
+%[33] T. Xiang, S. Gong, Incremental and adaptive abnormal behaviour
+%detection, Computer Vision and Image Understanding (CVIU) 111 (1)
+%(2008) 59--73. \\
+
+%\noindent
+%[41] K. Ouivirach, S. Gharti, M. N. Dailey, Automatic suspicious
+%behavior detection from a small bootstrap set, in: VISAPP, 2012,
+%pp. 655--658.\\
+
+\noindent Please see my response to the comments below.
+
+\vspace{0.5cm}
+
+\textit{I found this thesis to be well written and easy to read. I found the 
+    technical work rather pedestrian (no pun intended), however. As a development 
+    of a well-performing anomaly detection system for single moving objects, 
+    the thesis work is acceptable, but it does not provide much in the way of 
+    an advance in the state-of-the art. The thesis does a fair job of relating 
+    previous work in areas directly related to the proposed approaches, but omits 
+    mention of current state-of-the-art research in the area of human activity 
+    recognition and detection. Finally, the thesis is deficient in the experimental 
+    validation of the proposed approaches. Only a single, rather simple, experimental 
+    situation was considered. The generality and robustness of the proposed approach 
+    cannot be judged with such a limited range of test scenarios. The important 
+    case of multiple objects was not at all considered, not even at a hypothetical 
+    level. A discussion of the failure modes of the proposed approach was not provided. 
+    This is extremely important as it suggests how the method can be improved, and 
+    for what range of applications is appropriate. The experimental scenarios 
+    should accordingly include those in which the system will fail.} \\
+
+\textit{The thesis was rather short as Ph.D.\ theses go, and it appears that this 
+    is due to a lack of detail in the description of the various algorithms, 
+    the aforementioned sparsity of the experimental scenarios, and a lack of 
+    informed and insightful discussion of the implications of the experimental 
+    results. The discussion sections of each chapter are basically just brief 
+    summaries of the results.} \\ 
+
+\textit{The following are some detailed comments regarding the thesis text.} \\
+
+\textit{The statement of the three main challenges for human behavior 
+    understanding, on page 2, is too strong. Point 1 states that ``It is 
+    impossible to store all data in a system.'' It is not impossible, 
+    although it may be impractical. Point 2 states that ``Real human behavior 
+    is always ambiguous;.'' This is not the case, human behavior is sometimes 
+    unambiguous. Point 3 states that ``Unusual behavior is rare and diverse; 
+    therefore we cannot learn a model for it.'' This is not true either, 
+    since we can always learn a model, it just might not be a very good model. 
+    Also, it is possible, but probably impractical, to acquire sufficient data 
+    for a good model even for infrequent events.}
+
+\authnote{I am thankful for the observations and corrections. I have
+    revised the statements to be less dogmatic and more accurate.}
+
+\newpage
+
+\textit{There should be a more in-depth review of the state-of-the-art in 
+    surveillance systems. By restricting the review to commercial and open-source 
+    systems the thesis misses out on the most advanced techniques. Commercial and 
+    open-source systems always lag behind the state-of-the-art by many years. 
+    For examples of such, see the special issue of Machine Vision and Applications, 
+    August 2007, Volume 18, Issue 3--4, on ``Novel concepts and challenges for the 
+    next generation of video surveillance systems.'' There should also be a review 
+    of recent work in human activity analysis, a currently hot area in machine vision 
+    research (e.g.\ see the paper Turaga, P.; Chellappa, R.; Subrahmanian, V. S.; 
+    Udrea, O., ``Machine Recognition of Human Activities: A Survey,'' Circuits and 
+    Systems for Video Technology, IEEE Transactions on, vol.18, no.11, pp.1473--1488, 
+    Nov.\ 2008). An example of recent high-quality work in this area is Weilong Yang; 
+    Yang Wang; Mori, G., ``Recognizing human actions from still images with latent poses,'' 
+    Computer Vision and Pattern Recognition (CVPR), 2010 IEEE Conference on, vol., no., 
+    pp.2030--2037, 13--18 June 2010.}
+
+\authnote{I have further extended the literature in Chapter 1 as suggested.}
+
+\textit{In section 2.3 a simple changed pixel measure is used to detect motion in 
+    an image. No details are given, however, such as the choice of the intensity 
+    difference threshold value. Such an approach can fail in common surveillance 
+    applications where the camera is subject to small vibration. These vibrations 
+    cause small shifts of the entire image, which can be sufficient to make a 
+    large number of pixels change their values significantly.}
+
+\authnote{This is indeed a limitation of our system.  I have added the following text 
+    to the motion detection section: ``Through some preliminary empirical experimentation 
+    I found that 300 was a good threshold. While this simple approach worked well in 
+    our experimental setup, it would not work as well in a situation where the camera 
+    is subject to vibration, causing a large number of pixels to change values 
+    significantly.''}
+
+\textit{On page 19 the formulae for the $dx$ and $dy$ should be given. If these 
+    are normalized (since they are referred to as a unit vector) then it is 
+    improper to label them as $dx$ and $dy$ (since that implies an incremental 
+    vector, not a unit vector). Also, if they define a unit vector, then it 
+    is redundant to use both of them in the feature vector. You should instead use 
+    a single angle parameter.}
+
+\authnote{While angle plus velocity would indeed be a minimal representation, we chose 
+    $x$, $y$, and velocity because of the small practical
+    problem of calculating 
+    Euclidean distances for angles. For instance, the distance between 1 degree
+    and 359 degrees is 2, 
+    not 358. Addressing this would require modifying the kmeans
+    library's source code.  While feasible, I did not think this would
+    change the result significantly.
+    To address the point of naming, I have
+    renamed $dx$ to $\theta_x$ and $dy$ to $\theta_y$ to 
+    make the text more clear.}
+
+\textit{It is important to say how you improved upon the method of Gharti (2010) 
+    for blob-tracking. The reader should know exactly what your contribution was. 
+    Just saying that you improved the code is not enough. You have to say what 
+    exactly you did.}
+
+\authnote{Actually, Gharti and I worked together on the first version of
+the blob tracking library.  The result became part of her
+master's thesis.  After she
+completed the thesis, I did some additional work to adapt the library
+for my purposes.  I have revised the section to make this more clear.}
+
+\textit{You say that you did not use Kalman filters or other approaches (presumably 
+    particle-filter methods) in the blob tracking since your data has little 
+    noise and the results are being coarsely quantized. However, the difficulties 
+    in tracking that are handled by particle-filter type methods are not those 
+    caused by noise, but those caused by multiple moving objects, with the attendant 
+    occlusions and ambiguity. Presumably these issues are present in your application 
+    as well (as you later note in section 2.7).}
+
+\authnote{This is an artifact of a response to a reviewer's 
+    specific comment about Kalman filtering the blob position on our Pattern Recognition 
+    manuscript and we really only meant the text to relate to that idea. 
+    Tracking blobs with particle filters before quantization could indeed improve 
+    the tracking results.  We have revised the text regarding Kalman filters to 
+    be more specific to the blob position from the tracker.}
+
+\newpage
+
+\textit{You should define all acronyms used in the thesis at their first appearance 
+    in the text (for example, HMM should be defined at the start of section 2.6). 
+    It is good practice to include a table of acronyms and symbols in the front matter 
+    of the thesis.}
+
+\authnote{I have fixed the mistake and now as suggested, I
+    include a table of acronyms and symbols in the front matter.}
+
+\textit{On page 22 it is stated that prior to clustering you normalize each feature by 
+    a $z$-score. What is a $z$-score in this context? Is it based on a statistical 
+    model of the feature? Details should be given here, at least provide an equation 
+    showing how the $z$-score is computed and the normalization done.}
+
+\authnote{I have added details as suggested.}
+
+\textit{The way in which equation 3.1 is written makes it unclear that (as I assume) 
+    the three likelihoods $P(H_\text{diff})$, $P(S_\text{diff})$, and $P(V_\text{diff})$ 
+    are multiplied together. Perhaps put in a multiplication symbol ($*$ or $\times$). Also, 
+    it is improper to call this the ``measurement likelihood,'' as it is actually the 
+    probability of measurement given the classification A, whereas it is the likelihood 
+    of the classification given the measurement, i.e.\ $L(A_{xy}=\text{sh} \mid M_{xy}) = 
+    P(M_{xy} \mid A_{xy}=\text{sh})$.}
+
+\authnote{I am thankful for the careful review. I have fixed the text as 
+    suggested.}
+
+\textit{How are the Gaussian model parameters estimated (in section 3.2.1)? The 
+    distributions for the true object pixels are clearly non-Gaussian so there 
+    are many ways that a Gaussian could be fit to these. What approach did you use? 
+    Did you just use the sample means and variances? A minimum variance estimator 
+    might be better.}
+
+\authnote{It is true that the distrubutions are very non-Gaussian. I
+  plan to extend this chapter in future work, but in this version, I
+  stuck to a relatively simple approach, so yes, I simply use the
+  sample mean and variance.  However, on extension of the work, we
+  will definitely investigate better estimators and different
+  distributions.  I have added this explanation to Section 3.2.1.}
+
+\textit{In section 4.2.2 it is said that morphological operations are used. 
+    More detail should be given for these. In general, enough detail should 
+    be given so as to allow someone to fully implement the proposed approach 
+    and replicate the experiments done.}
+
+\authnote{I have added details to the section as suggested.}
+
+\textit{Section 4.2.2 states that the evaluation is limited to a single moving blob. 
+    It is said that this is for simplicity, but it also prevents the approach from 
+    being evaluated on the more usual and interesting problem of multiple targets. 
+    Saying that the restriction is for simplicity implies that it is not imposed 
+    due to the inability of the proposed approach to handle the multiple target 
+    case. If the proposed approach does in fact work for multiple targets this 
+    should be stated and verified, as it would be a strong advantage of the approach. 
+    If the approach does not work in this case, then it is misleading to say that 
+    the single blob case was used for simplicity, when in fact it is being imposed 
+    due to the approach failing. In either case the proposed approach should be 
+    tested on multiple targets to see how it performs and where it might fail.}
+
+\authnote{I regret that it is unclear in the description of our methodology. 
+    Only the evalution in Chapter 4 is limited to a single moving blob. 
+    We extended the experiments to multiple moving blobs in later chapters. 
+    I have revised the description to eliminate the confusion.}
+
+\textit{How is the empirical ``tuning'' described in section 4.2.2 actually done? 
+    Details are needed!}
+
+\authnote{We set up our system and observed the scene for a few days
+  before we started collecting data. We manually fine-tuned the frame
+  buffer length and motion detection thresholds for triggering events
+  to achieve good results per manual observation. Other parameters
+  critical to the modeling such as the number of $k$-mean clusters
+  were set through cross validation.  I have modified the section to
+  make this more clear.}
+
+\newpage
+
+\textit{The equation on page 36 (which should have an equation number!) 
+    defines a (log) likelihood, but the text incorrectly refers to this 
+    as the likelihood of the sequence $O_i$. This indicates a misunderstanding 
+    of the meaning of the term ``likelihood.'' The quantity $L_i$ is the log 
+    of the probability of the sequence $O_i$ given the HMM $M_c$, and is also 
+    the log of the likelihood of the HMM $M_c$ given the sequence $O_i$. 
+    Note the difference!}
+
+\authnote{I regret the confusion caused by our description and have fixed it.}
+
+\textit{Figures 4.4, 5.2 and 6.1 are duplicates of each other. Only one need 
+    be given. These figures (or figure) should show one or more examples of 
+    the anomalous behaviors. The text should also describe the nature of 
+    typical anomalous behaviors that were observed (e.g.\ a person standing 
+    still or dancing, or stopping halfway and turning back in the direction 
+    they came).}
+
+\authnote{I have added one more example of common behaviors in Figure 5.2 
+    to distinguish the data in Chapter 4 and added more typical abnormal 
+    behaviors in Figure 5.5. I have also revised the text as suggested.}
+    
+\textit{In table 4.1 it is evident that the clusters do not separate the 
+    Walking In and Cycling In behaviors. This implies that the HMMs are 
+    not discriminative enough and perhaps could benefit from additional 
+    training examples. Of course, for the purposes of deciding on usual 
+    versus anomalous this is acceptable, but that leads to the conclusion 
+    that a simpler training of HMMs would work just as well.}
+
+\authnote{This is a good point. Since the current system treats each
+  ($z$-scaled) feature equally when it performs blob feature vector
+  discretization, important fine distinctions for some features can be
+  lost.  Adding more weight to features such as blob size or aspect
+  ratio could help distinguish these behaviors.  I have modified the
+  text to include this point. \\
+
+  Regarding a simpler HMM training method, we could have 
+  human operator select the groups of similar behaviors, train one model 
+  on each group, and try to come up with a set of thresholds for 
+  typical behavior discrimination and anomaly detection. However, based on my 
+  previous empirical experience in my Master's thesis [1], a simpler method 
+  would not work. The problem is that the appropriate threshold may vary 
+  within one scene from model to model. Threfore, the threshold selection 
+  with the simpler method becomes painful. \\
+  
+  {\bf Reference:} 
+
+  [1] Ouivirach, K.\ (2008).\ \textit{Human behavior profiling for a video 
+  surveillance system}. Unpublished Master's thesis, Computer Science and 
+  Information Management (CSIM), Asian Institute of Technology (AIT).}
+
+\textit{It is misleading to claim that the separation of anomalous and 
+    typical behaviors in Table 1 is 100\%. It is not, since there are 
+    still unseparated behaviors in the single sequence clusters. A manual 
+    classification of these single-sequence clusters could result in 
+    the anomalous behaviors being classified as one of the typical behaviors.}
+
+\authnote{It is true that it would be difficult to separate these
+  single-sequence clusters. I have revised the claim accordingly.}
+
+\textit{The conclusion stated in section 4.3.3 that ``our method achieves 
+    perfect separation of anomalous and typical behaviors'' is completely 
+    unwarranted. All that you have done is demonstrated this perfect separation 
+    in a single restricted dataset. You would need to repeat this experiment 
+    over a very much larger database of examples before anyone would take 
+    this conclusion seriously. The limited experimentation is a major weakness 
+    of the thesis. Nothing can really be concluded from it.}
+
+\authnote{I thought it obvious that the conclusion would be taken as
+  specific to the restricted dataset used in Chapter 4 (please see the
+  response above regarding the single-blob limitation that is
+  eliminated in later chapters), but I have modified the claim to make
+  it more clear.\\
+
+  The method requires at least a week of video data. Other data sets I
+  found, such as the PETS data set, which mainly focuses on tracking
+  eveluation, or the ViSOR data set, contain videos recorded less than 
+  one week for each camera. Therefore, they are inappropriate
+  for our method. \\
+  
+  Unfortunately, so far, we have not found any large
+  data set that is appropriate yet.  Since no existing dataset is
+  suitable, we created our own. It is freely available for others to
+  experiment with at
+  \url{http://se.cs.ait.ac.th/~kan/Datasets/CSIM-Forecourt-Videos/}.}
+
+\textit{Is the $\theta_z$ of Algorithm 2 the same as the quantity $p_c$ 
+    defined in section 5.2.1?}
+
+\authnote{They are different. The $p_c$ is the optimal rejection threshold 
+    for cluster $c$ whereas the $\theta_z$ is the alarm threshold.}
+
+\textit{Is the testbed described in section 5.4 the same as that used in 
+    chapter 4?}
+
+\authnote{The testbed data in Chapter 4 and in Section 5.4 are different. 
+    We evaluate the testbed data in Chapter 4 with only single moving blobs 
+    and we extened this testbed data to include multiple moving blobs in 
+    Section 5.4 or Chapter 5. Please see my response regarding this issue 
+    above.}
+
+\textit{The graphs in figure 5.3 should be enlarged. Perhaps array these as 2 
+    columns by 3 rows, and fill an entire page. Otherwise it is difficult to 
+    read the legend and labels of the graphs. The examination copy that I was 
+    given did not have any color, so the captions should be altered to remove 
+    any reference to color. Markers could be added to the lines on the graph 
+    to help distinguish them. The axes need to be labeled!}
+
+\authnote{I haved increased the size of figures, fixed the labels, and revised 
+    the caption as suggested.}
+
+\textit{Table 5.1 does not show ``perfect accuracy'' as stated in section 5.4.1, 
+    since, as in chapter 4, the one-sequence clusters do not separate the 
+    anomalous from typical behaviors. This has to be done manually, and it 
+    is not demonstrated that manual separation can be done perfectly.}
+
+\authnote{As above, it is true that it would be difficult to separate
+  the single-sequence clusters.  I have revised the section
+  accordingly.}
+
+\textit{The version of the thesis I was given did not have color, so the different 
+    curves in figure 5.4 could not be distinguished. These should have different 
+    line types, or have distinguishing markers added.}
+
+\authnote{I have fixed it.}
+
+\textit{On page 50 it is stated that the ROC (figure 5.4) reveals that a 
+    threshold of -3.259 achieves zero false negatives. However, there are 
+    no indications of the threshold values on figure 5.4 so I do not see 
+    how this threshold value of -3.259 can be obtained by looking at 
+    figure 5.4.}
+
+\authnote{I have fixed it.}
+
+\textit{The acronyms (e.g.\ TP, FP, TN, etc.) used in Table 5.2 should be 
+    defined in the table caption.}
+
+\authnote{I now define the acronyms in the table captions throughout the 
+    dissertation. I also put a list of acronyms in the front matter.}
+
+\textit{How do the results of chapter 5 vary with changes in the size of the 
+    bootstrap set? Is there an optimal size?}
+
+\authnote{I have performed some brief experimentation to determine how
+  the size of bootstrap set affects the results. I found that with
+  more bootstrap data we tend to discover more compact behavior
+  classes, leading to better anomaly detection rates in practice. \\
+    
+  However, since a larger bootstrap set will generally
+  contain more variable
+  behavior, our approach consequently creates more
+  models to handle the more variable set of patterns.
+  The effect is that we require more interaction
+  with the operator determine whether each behavior cluster is normal or
+  abnormal.\\
+  
+  In this sense, the
+  ``optimal'' bootstrap set size would thus be a size sufficient to
+  include most typical behaviors (1--2 days) but no more.\\
+
+  I have added a note to this effect to Section 5.4.2.1.
+  }
+
+\authnote{I thank Prof.\ Clark again for the careful review that has
+  helped me to substantially improve my dissertation.}
+
+\end{document}
+

@@ -1,0 +1,53 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+    \setbeamertemplate{background canvas}[square]
+    \usetheme{Madrid}
+    \usecolortheme{rose}
+    \usefonttheme[onlysmall]{structurebold}
+}
+
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade,graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{graphics}
+\usepackage{ragged2e}
+\usepackage[latin1]{inputenc}
+\usepackage{colortbl}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[english]{babel}
+\usepackage{listings}
+\setbeamercovered{dynamic}
+\usepackage[caption=false,font=footnotesize]{subfig}
+\usepackage{array}
+\usepackage{multirow}
+
+\begin{document}
+
+\begin{frame}
+    \frametitle{ABC}
+    \framesubtitle{abc}
+    
+    \begin{table}
+        \vspace{-0.1in}
+        \centering
+        \begin{tabular}{ | c | c | c | c | c | c | }
+            \hline
+            \# & A & B & C & D & Other \\ \hline
+            1 & 96 & 0 & 18 & 0 & 0 \\ \hline
+            2 & 0 & 54 & 0 & 5 & 0 \\ \hline
+            3 & 0 & 3 & 0 & 8 & 0 \\ \hline
+            4 & 0 & 2 & 0 & 0 & 0 \\ \hline
+            5 & 0 & 1 & 0 & 2 & 0 \\ \hline
+            \multicolumn{6}{c}{...} \\ \hline
+            14 & 0 & 0 & 0 & 0 & 4 \\ \hline
+            15 & 0 & 0 & 0 & 0 & 4 \\ \hline
+            16 & 0 & 0 & 0 & 0 & 2 \\ \hline
+            17 & 0 & 0 & 0 & 0 & 2 \\ \hline
+            18 & 4 & 17 & 34 & 21 & 4 \\ \hline
+        \end{tabular}
+    \end{table}
+    
+\end{frame}
+
+\end{document}
